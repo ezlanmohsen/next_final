@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :occupation
       t.string :industry
-      t.integer :role, :default => 0 #to use enum in model - [customer, researcher, admin]
+      t.integer :role, :default => 0 #to use enum in model - [customer, researcher, superadmin]
       t.string :email, null: false
       t.string :password_digest
 
