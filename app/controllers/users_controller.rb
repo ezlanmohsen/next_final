@@ -13,6 +13,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def index
+  		#short term fix if user refresh upon failed sign in
+  		redirect_to new_user_path
+	end
+
 	private
 
 	def user_params
