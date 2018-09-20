@@ -21,6 +21,17 @@ class UsersController < ApplicationController
   		redirect_to new_user_path
 	end
 
+	def show
+		@user = User.find(params[:id])
+		if @user.first_name == nil || @user.last_name == nil || @user.occupation == nil || @user.industry == nil
+			redirect_to edit_user_path(@user)
+		end
+	end
+
+	def edit
+		
+	end
+
 	private
 
 	def user_params
