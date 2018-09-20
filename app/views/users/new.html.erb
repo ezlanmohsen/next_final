@@ -1,7 +1,16 @@
 <h1>THIS IS THE SIGN UP PAGE</h1>
 
+
+
 <div>
 	<%=form_for @user do |form|%>
+	  <div>
+		<% if @user.errors.any? %>
+			<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		<% end %>
+	  </div>
 
 	  Email: <%= form.text_field :email %>
 	  Password: <%= form.password_field :password %>
