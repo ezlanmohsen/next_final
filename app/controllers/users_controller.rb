@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_action :authorize, :except => [:new, :create, :index]
+	before_action :same_user, :except => [:new, :create, :index]
 
 	def new
 		@user = User.new
