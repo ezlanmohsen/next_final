@@ -1,0 +1,2 @@
+class GenericController < ApplicationController
+end
