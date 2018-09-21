@@ -1,7 +1,23 @@
 <h1>THIS IS THE SIGN UP PAGE</h1>
 
+
+
 <div>
-	FORM FOR QUICK SIGN UP (Email & Password). Redirect to update more details at users#first_edit!
+	<%=form_for @user do |form|%>
+	  <div>
+		<% if @user.errors.any? %>
+			<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		<% end %>
+	  </div>
+
+	  Email: <%= form.text_field :email %>
+	  Password: <%= form.password_field :password %>
+	  Password Confirmation: <%= form.password_field :password_confirmation %>
+
+	<%=form.submit%>
+<%end%>
 </div>
 
 <br>

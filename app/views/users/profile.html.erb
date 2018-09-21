@@ -1,9 +1,16 @@
 <h1>THIS IS THE USER PROFILE PAGE</h1>
+<%= link_to "Go to your main page", user_path(@current_user) %>
 
 <div>
 	<h4>Your details!</h4>
-
-	<h6>(Link to edit profile)</h6>
+	<div>
+		Name: <%=@current_user.first_name%> <%=@current_user.last_name%><br>
+		Member since: <%=@current_user.created_at.to_date%><br>
+		Occupation: <%=@current_user.occupation%><br>
+		Industry: <%=@current_user.industry%><br>
+		Mobile no: <%=@current_user.mobile%><br>
+	</div>
+	<h6><%= link_to "Edit your profile!", edit_user_path(@current_user)%></h6>
 </div>
 
 <br>
