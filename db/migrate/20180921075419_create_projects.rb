@@ -12,7 +12,6 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.integer :status_admin, :default => 0 #to use enum in model - [queued, assigned, started, completed]
       t.timestamps null: false
     end
-    end
   end
 end
 
