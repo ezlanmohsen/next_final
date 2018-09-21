@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		if @user.first_name == nil || @user.last_name == nil || @user.occupation == nil || @user.industry == nil
+		if @user.first_name == nil || @user.last_name == nil || @user.occupation == nil || @user.industry == nil || @user.mobile == nil
 			redirect_to edit_user_path(@user)
 		end
 	end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 	def update
   		@user = User.find(params[:id])
 	  	if @user.update(user_params)
-	  		redirect_to user_path(@user)
+	  		redirect_to user_profile(@user)
 	  	else
   			render 'edit'
   		end
