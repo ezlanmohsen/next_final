@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_075419) do
+ActiveRecord::Schema.define(version: 2018_09_21_091348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "points", force: :cascade do |t|
+    t.bigint "topic_id"
+    t.bigint "user_id"
+    t.string "name", null: false
+    t.string "reference_url", null: false
+    t.integer "year", default: 0, null: false
+    t.integer "like_admin", default: 0, null: false
+    t.integer "like_user", default: 0, null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_points_on_topic_id"
+    t.index ["user_id"], name: "index_points_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.bigint "user_id"
@@ -48,6 +63,8 @@ ActiveRecord::Schema.define(version: 2018_09_21_075419) do
     t.string "mobile"
   end
 
+  add_foreign_key "points", "topics"
+  add_foreign_key "points", "users"
   add_foreign_key "projects", "topics"
   add_foreign_key "projects", "users"
 end
