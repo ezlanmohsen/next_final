@@ -1,5 +1,8 @@
 class Topic < ApplicationRecord
 
-	#validations
+	has_many :projects
+	
+	#validations for name
 	validates :name, presence: true
+
 end
