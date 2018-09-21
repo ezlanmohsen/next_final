@@ -9,6 +9,26 @@
 	<h4>I WANT A TALKING POINT!</h4>
 	<div>
 		(ONCLICK, FORM TO SUBMIT NEW REQUEST)
+
+		<%=form_for @project do |form|%>
+			<div>
+				<%= form.label :name %> 
+				<!-- form.label gives the printed name of that field. Can change -->
+				<%= form.text_field :name, placeholder: 'Name of project' %>
+			</div>
+			
+			<div>
+				<%= form.label :description %> 
+				<%= form.text_field :description, placeholder: 'Describe your project!' %>
+			</div>
+
+			<div>
+				<%= form.label :pages %> 
+				<%= form.select :pages, ((1..9).map {|i| [i,i] } << [10,nil]) %>
+			</div>
+			
+			<%=form.submit%>
+		<%end%>
 	</div>
 </div>
 

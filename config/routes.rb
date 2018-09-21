@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 	resources :users do
   	end
 
+  	resources :projects do
+  	end
+
   # Sessions routes to help with login, posting login and logging out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
