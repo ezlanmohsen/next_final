@@ -7,9 +7,9 @@ class CreatePoints < ActiveRecord::Migration[5.2]
       t.string :name, null: false #validate length in model. Longer length.
       t.string :reference_url, null: false #validate url in model
       t.integer :year, null: false, :default => 0000 #validate year in model
-	  t.integer :like_admin, null: false, :default => 0
-	  t.integer :like_user, null: false, :default => 0
-	  t.integer :status, :default => 0 #to use enum in model - [valid, invalid]
+  	  t.integer :like_admin, null: false, :default => 0
+  	  t.integer :like_user, null: false, :default => 0
+  	  t.integer :status, :default => 0 #to use enum in model - [valid, invalid]
       t.timestamps
     end
   end
