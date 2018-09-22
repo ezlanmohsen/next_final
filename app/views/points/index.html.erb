@@ -1,0 +1,13 @@
+		<% @points.each do |point| %>
+			<%= point.name %><br>
+			<%= point.reference_url %><br>
+			<%= point.topic.name %><br>
+			<%= point.user.email %><br>
+			<%= point.year %><br>
+			<%= point.like_admin %><br>
+			<%= point.like_user %><br>
+			<%= point.status %>
+			<br>
+			<br>
+			<br>
+		<% end %>

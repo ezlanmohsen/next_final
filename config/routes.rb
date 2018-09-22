@@ -5,10 +5,13 @@ Rails.application.routes.draw do
 	get 'users/:id/profile', to: 'users#profile', as: :user_profile
 
 	resources :users do
-  	end
+  end
 
-  	resources :projects do
-  	end
+  resources :projects do
+  end
+
+  resources :points do
+  end
 
   # Sessions routes to help with login, posting login and logging out.
   get '/login' => 'sessions#new'
