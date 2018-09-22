@@ -4,6 +4,7 @@ class User < ApplicationRecord
 	validates :email, uniqueness: true
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
   has_many :projects
+  has_many :points
 
 	OCCUPATION_LIST = [
   	'Agriculture, forestry and fishing',
