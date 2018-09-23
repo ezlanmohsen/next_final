@@ -1,0 +1,22 @@
+
+<h1>all projects!</h1>
+
+<br>
+<br>
+<br>
+
+<div>
+	<% @projects.each do |project| %>
+			<%= project.name %><br>
+			<%= project.description %><br>
+			<%= project.topic.name %><br>
+			<%= project.pages %><br>
+			<%= project.created_at.to_date %><br>
+			<%= project.status_user %><br>
+			<%= project.status_admin %><br>
+			lalala
+			<br>
+			<br>
+			<br>
+	<% end %>
+</div>

@@ -16,7 +16,8 @@
   <% end %>
 
   <% if current_user.superadmin? %>
-    <%= link_to "Check out all users", '/users' %>
+    <%= link_to "Check out all users", '/users' %> 
+    <%= link_to "Check out all projects", '/projects' %>
   <% end %>
 
     <%= yield %>

@@ -10,6 +10,14 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+	def index
+  		if current_user.superadmin?
+			@projects = Project.all
+		else
+			redirect_to user_path(current_user)
+		end
+	end
+
 	private
 
 	def project_params
