@@ -19,7 +19,16 @@ class UsersController < ApplicationController
 
 	def index
   		#short term fix if user refresh upon failed sign in
-  		redirect_to new_user_path
+  		if current_user == nil
+  			redirect_to new_user_path
+  		else
+  			if current_user.superadmin?
+  				@users = User.all
+  			else
+  				redirect_to user_path(current_user)
+  			end
+  		end
+
 	end
 
 	def show

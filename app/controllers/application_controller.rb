@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user
   end
 
-    # Allow us to use same_user in user conttorler
+    # Allow us to use same_user in user controller
   def same_user
-    redirect_to user_path(current_user) unless current_user.id == params[:id].to_i
+    redirect_to user_path(current_user) unless (current_user.id == params[:id].to_i || current_user.superadmin?)
   end
 
 end

@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 	has_secure_password
+
+  enum role: [:customer, :researcher, :superadmin]
+
 	validates :password, presence: { on: :create }, length: { minimum: 5, allow_blank: true }
 	validates :email, uniqueness: true
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
