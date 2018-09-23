@@ -38,4 +38,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  RailsAdmin.config do |config|
+    config.parent_controller = "::ApplicationController"
+
+    config.authorize_with do
+      redirect_to main_app.root_path unless current_user.superadmin?
+    end
+  end
+
 end
