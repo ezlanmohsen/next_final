@@ -1,0 +1,16 @@
+
+<h1>all users!</h1>
+
+<br>
+<br>
+<br>
+
+<div>
+	<% @users.each do |user| %>
+		<%= link_to "Check #{user.email} out", user_path(user) %>
+		<br>
+		<br>
+		<br>
+		<br>
+	<% end %>
+</div>
