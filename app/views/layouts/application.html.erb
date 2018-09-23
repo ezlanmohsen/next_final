@@ -15,6 +15,10 @@
     Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
   <% end %>
 
+  <% if current_user.superadmin? %>
+    <%= link_to "Check out all users", '/users' %>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>
