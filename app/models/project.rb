@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
-	enum status_user: [:Booked, :Paid, :Delivered] 
-	enum status_admin: [:Unassigned, :Queued, :Assigned, :Started, :Completed]
+	enum status_user: [:booked, :paid, :delivered] 
+	enum status_admin: [:unassigned, :queued, :assigned, :started, :completed]
 
     belongs_to :user
 	belongs_to :topic

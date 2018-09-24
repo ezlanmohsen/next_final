@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 	def index
   		if current_user.superadmin?
 			@projects = Project.all
+			@assignment = Assignment.new
 		else
 			redirect_to user_path(current_user)
 		end

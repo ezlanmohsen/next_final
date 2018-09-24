@@ -13,7 +13,29 @@
 			<%= project.pages %><br>
 			<%= project.created_at.to_date %><br>
 			<%= project.status_user %><br>
-			<%= project.status_admin %>
+			<%= project.status_admin %><br>
+
+				<% if project.unassigned? %>
+
+					<div>
+						<%=form_for @assignment do |form|%>
+
+						<div>
+							<%= form.label :user_id %> 
+							<%= form.collection_select :user_id, User.where(role: 1) , :id, :email, :prompt => "Choose which researcher to assign!" %>
+						</div>
+
+						<div>
+							<%= form.label :due_date %> 
+							<%= form.datetime_select :due_date, :ampm => true, :day_step => 1 %>
+						</div>
+						<%= form.hidden_field :project_id, value: project.id %>
+		
+						<%=form.submit "Assign Now" %>
+						<% end %>
+					</div>
+				<% end %>
+
 			<br>
 			<br>
 			<br>
