@@ -1,9 +1,17 @@
 class AssignmentsController < ApplicationController
+
+	def index
+  		if current_user.superadmin?
+			@ass = Assignment.all
+		else
+			redirect_to user_path(current_user)
+		end
+	end
+
 	def create
 		@assignment = Assignment.new(assignment_params)
 		@project = Project.find(assignment_params[:project_id])
 		if @assignment.save
-			byebug
 			if @project.unassigned?
 				@project.assigned!
 			end
@@ -15,7 +23,7 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@ass = Assignment.find(params[:id])
-		if current_user.id != @ass.user.id
+		if (current_user.id != @ass.user.id) || current_user.customer?
 			redirect_to user_path(current_user)
 		end
 		@points = Point.last(10)
@@ -33,6 +41,9 @@ class AssignmentsController < ApplicationController
 	    else
 	      	@points = Point.last(10)
 	    end
+
+	    @point = Point.new
+
 	end
 
 
