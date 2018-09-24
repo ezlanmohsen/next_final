@@ -16,7 +16,7 @@
 <div>
 		Search for relevant points!
 
-		<%= form_tag assignment_path, :method => 'get' do %>
+		<%= form_tag assignment_path, :method => 'get', remote: true do %>
 				<div>
 					<%= label_tag 'Topic' %>
 					<%= select_tag(:search_topic, options_from_collection_for_select(Topic.all, "id", "name", :selected => params[:search_topic]))%>
@@ -41,12 +41,13 @@
 		<% end %>
 </div>
 
-<div>
+<div id="point-list">
+	TOTAL RESULTS: <%= @points.count %><br>
 	<% @points.each do |point| %>
-		<%= point.name %>
-		<%= point.topic.name %>
-		<%= point.year %>
-		<%= point.like_admin %>
+		Point: <%= point.name %><br>
+		Topic: <%= point.topic.name %><br>
+		Year: <%= point.year %><br>
+		Times used by admin: <%= point.like_admin %>
 		<br>
 		<br>
 	<% end %>
