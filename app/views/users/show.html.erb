@@ -83,7 +83,15 @@
 <div>
 	<h4>MOST POPULAR POINTS SO FAR!</h4>
 	<div>
-		(A list (maybe cards?) of most popular points so far. Potentially, users interact by liking.)
+			<% @points.each do |point| %>
+				<%= point.name %><br>
+				<%= link_to "reference", point.reference_url %><br>
+				<%= point.topic.name %><br>
+
+				<br>
+				<br>
+				<br>
+			<% end %>
 	</div>
 </div>
 

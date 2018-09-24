@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 		@project = Project.new
 		@projects = Project.where(user_id: @user.id)
 		@assignments = Assignment.where(user_id: @user.id)
+		@points = Point.order(like_admin: :desc).order(like_user: :desc).limit(10)
 	end
 
 	def edit
