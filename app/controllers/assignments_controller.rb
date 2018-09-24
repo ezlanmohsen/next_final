@@ -1,4 +1,13 @@
 class AssignmentsController < ApplicationController
+
+	def index
+  		if current_user.superadmin?
+			@ass = Assignment.all
+		else
+			redirect_to user_path(current_user)
+		end
+	end
+
 	def create
 		@assignment = Assignment.new(assignment_params)
 		@project = Project.find(assignment_params[:project_id])

@@ -23,8 +23,7 @@
   <% if current_user %>
     Signed in as <%= current_user.email %> | <%= link_to "My Projects", user_path(current_user) %> | <%= link_to "My Profile", user_profile_path(current_user) %> | <%= link_to "Logout", '/logout' %> |
     <% if current_user.superadmin? %>
-      <%= link_to "Check out all users", '/users' %> 
-    <%= link_to "Check out all projects", '/projects' %>
+      | <%= link_to "All Users", '/users' %> | <%= link_to "All Projects", '/projects' %> | <%= link_to "All Assignments", '/assignments' %> | <%= link_to "Admin Dashboard", '/admin' %> |
   <% end %>
   <% end %>
 

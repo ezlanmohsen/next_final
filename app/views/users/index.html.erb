@@ -7,6 +7,8 @@
 
 <div>
 	<% @users.each do |user| %>
+		<%= user.email %><br>
+		<%= user.role %><br>
 		<%= link_to "Check #{user.email} out", user_path(user) %>
 		<br>
 		<br>
