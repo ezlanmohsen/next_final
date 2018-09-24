@@ -3,7 +3,6 @@ class AssignmentsController < ApplicationController
 		@assignment = Assignment.new(assignment_params)
 		@project = Project.find(assignment_params[:project_id])
 		if @assignment.save
-			byebug
 			if @project.unassigned?
 				@project.assigned!
 			end
@@ -33,6 +32,8 @@ class AssignmentsController < ApplicationController
 	    else
 	      	@points = Point.last(10)
 	    end
+
+	    @point = Point.new
 	end
 
 

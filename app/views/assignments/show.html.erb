@@ -54,6 +54,37 @@
 
 </div>
 
+<div>
+	CREATE NEW POINT!
+	<div>
+		<%=form_for @point do |form|%>
+			<div>
+				<%= form.label :name %> 
+				<%= form.text_field :name, placeholder: 'What is the point?' %>
+			</div>		
+
+			<div>
+				<%= form.label :reference_url %> 
+				<%= form.text_field :reference_url, placeholder: 'Please copy and paste the url!' %>
+			</div>	
+
+			<div>
+				<%= form.label :year %> 
+				<%= form.select :year, ((1950..Date.today.year).map {|i| [i,i] }) %>
+			</div>		
+
+			<div>
+				<%= form.label :topic_id %> 
+				<%= form.collection_select :topic_id, Topic.all, :id, :name, :prompt => "Choose the most relevant topic" %>
+			</div>
+			
+			<%=form.submit%>
+		<%end%>	
+
+
+	</div>
+</div>
+
 
 
 
