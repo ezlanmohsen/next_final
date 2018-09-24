@@ -14,7 +14,7 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@ass = Assignment.find(params[:id])
-		if current_user.id != @ass.user.id
+		if (current_user.id != @ass.user.id) || current_user.customer?
 			redirect_to user_path(current_user)
 		end
 		@points = Point.last(10)
@@ -34,6 +34,7 @@ class AssignmentsController < ApplicationController
 	    end
 
 	    @point = Point.new
+
 	end
 
 

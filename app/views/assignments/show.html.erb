@@ -80,11 +80,59 @@
 			
 			<%=form.submit%>
 		<%end%>	
-
-
 	</div>
 </div>
 
+<br>
+<br>
+<br>
+
+<div>
+	<h4>Latest Related News to <%=@ass.project.topic.name%>!</h4>
+	<ol id="news"></ol>
+</div>
+
+<%= content_tag 'div', '', id: 'topic', data: {key1: @ass.project.topic.name} %>
+
+
+<script>
+
+var topic = $('#topic').data('key1')
+
+var url = 'https://newsapi.org/v2/everything?' +
+          'q=' + topic + '&' +
+          'from=2018-09-24&' +
+          'sortBy=popularity&' +
+          'apiKey=c595dfa7a22744e2a7d7fde71077a8ea';
+
+var ul = document.getElementById('news');
+
+function createNode(element) {
+    return document.createElement(element); // Create the type of element you pass in the parameters
+}
+
+function append(parent, el) {
+    return parent.appendChild(el); // Append the second parameter(element) to the first one
+}
+
+var req = new Request(url);
+
+fetch(req).then(function(response) {
+  // alert(response.status);
+  return response.json();
+}).then(function(jsonData){
+
+  var i = 0
+  for (var i = 0; i < 10; i++) {
+	  let content = jsonData.articles[i].description
+	  let url = jsonData.articles[i].url
+	  let li = createNode('li')
+	  li.innerHTML = content + '' + url + ' <br><br>' ;
+	  append(ul, li);
+  }
+});
+
+</script>
 
 
 
