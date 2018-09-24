@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
     belongs_to :user
 	belongs_to :topic
+	has_many :assignments
 
 	#validations
 	validates :name, length: { maximum: 30, minimum: 5,

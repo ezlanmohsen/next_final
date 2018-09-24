@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  project: one
+  due_date: 2018-09-24 14:24:07
+
+two:
+  user: two
+  project: two
+  due_date: 2018-09-24 14:24:07
