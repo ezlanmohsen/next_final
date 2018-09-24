@@ -44,6 +44,21 @@
 <br>
 
 <div>
+	<% if @user.researcher? ||  @user.superadmin?%>
+		<h4>SEE PENDING ASSIGNMENTS!</h4>
+		<% @assignments.each do |ass| %>
+			<%= ass.project.name %><br>
+			<%= ass.project.user.email %><br>
+			<%= ass.project.topic.name %><br>
+			<%= ass.project.created_at.to_date %><br>
+			Assigned on: <%= distance_of_time_in_words(Time.now, ass.created_at) %> ago<br>
+			Time Remaining: <%= distance_of_time_in_words(ass.due_date, Time.now) %><br>
+
+			<br>
+			<br>
+
+		<% end %>
+	<% end %>
 	<h4>SEE YOUR PAST PROJECTS!</h4>
 	(A preview of all past talking points. Card style from bootsnipp.)
 	<div>

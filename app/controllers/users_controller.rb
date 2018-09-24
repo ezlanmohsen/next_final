@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 		end
 		@project = Project.new
 		@projects = Project.where(user_id: @user.id)
+		@assignments = Assignment.where(user_id: @user.id)
 	end
 
 	def edit
