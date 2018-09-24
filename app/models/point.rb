@@ -14,21 +14,28 @@ class Point < ApplicationRecord
     validates :year, :numericality => { :greater_than_or_equal_to => 1950, message: "Must be later than 1949" }
 
 	#method to filter
-	def self.search(form_name, form_topic, form_year, form_admin_likes)
-		if (form_name != "") && (form_name != nil)
-			
-	      self.where("lower(name) LIKE ?", "%#{form_name.downcase}%")
-	      #ANOTHER WAY TO WRITE THIS:
-	      # scope :name_search,  ->(form_name) {where ("lower(name) LIKE ?", "%#{form_name.downcase}%")}
-	      # then call Listing.name_search(params[:yaydaydayda])
-		elsif (form_topic != "") && (form_topic != nil)
-	      self.where("topic_id == ?", form_topic)	
+	def self.search(form_topic, form_year, form_admin_likes)
 
-		elsif (form_year != "") && (form_year != nil)			
-	      self.where("year <= ?", form_year)
+		if ((form_topic != "") && (form_topic != nil)) && ((form_year != "") && (form_year != nil)) && ((form_admin_likes != "") && (form_admin_likes != nil))
+			self.where("topic_id = ?", form_topic).where("year >= ?", form_year).where("like_admin >= ?", form_admin_likes).order(like_admin: :desc).limit(20)
+
+		elsif ((form_topic != "") && (form_topic != nil)) && ((form_year != "") && (form_year != nil))
+			self.where("topic_id = ?", form_topic).where("year >= ?", form_year).order(year: :desc).limit(20)
+
+		elsif ((form_year != "") && (form_year != nil)) && ((form_admin_likes != "") && (form_admin_likes != nil))
+			self.where("year >= ?", form_year).where("like_admin >= ?", form_admin_likes).order(like_admin: :desc).limit(20)
+
+		elsif ((form_topic != "") && (form_topic != nil)) && ((form_admin_likes != "") && (form_admin_likes != nil))
+			self.where("topic_id = ?", form_topic).where("like_admin >= ?", form_admin_likes).order(like_admin: :desc).limit(20)
+
+		elsif (form_topic != "") && (form_topic != nil)	
+			self.where("topic_id = ?", form_topic).order(like_admin: :desc).limit(20)
+
+		elsif (form_year != "") && (form_year != nil)	
+	      self.where("year >= ?", form_year).order(year: :desc).limit(20)
 
 	    elsif (form_admin_likes != "") && (form_admin_likes != nil)			
-	      self.where("like_admin >= ?", form_admin_likes)
+	      self.where("like_admin >= ?", form_admin_likes).order(like_admin: :desc).limit(20)
 	    else
 	      self.all
 	    end

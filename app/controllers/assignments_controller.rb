@@ -22,8 +22,8 @@ class AssignmentsController < ApplicationController
 		#refer to method in model
 	    if params[:reset]
 	      @points = Point.last(10)
-	    elsif params[:search_name]
-	      @points = Point.search(params[:search_name], params[:search_topic], params[:search_year], params[:search_admin_likes])
+	    elsif params[:search_topic] || params[:search_year] || params[:search_admin_likes]
+	      @points = Point.search(params[:search_topic], params[:search_year], params[:search_admin_likes])
 	    else
 	      @points = Point.last(10)
 	    end
