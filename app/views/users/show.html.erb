@@ -61,12 +61,13 @@
 	(A preview of all past talking points. Card style from bootsnipp.)
 	<div>
 		<% @projects.each do |project| %>
-			<%= project.name %><br>
-			<%= project.description %><br>
-			<%= project.topic.name %><br>
-			<%= project.pages %><br>
-			<%= project.created_at.to_date %><br>
-			<%= project.status_user %>
+			Name: <%= project.name %><br>
+			Description: <%= project.description %><br>
+			Topic: <%= project.topic.name %><br>
+			Pages: <%= project.pages %><br>
+			Created on: <%= project.created_at.to_date %><br>
+			Status: <%= project.status_user %><br>
+			Progress: <%= project.status_admin %><br>
 			<br>
 			<br>
 			<br>
