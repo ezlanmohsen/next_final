@@ -19,6 +19,7 @@ class AssignmentsController < ApplicationController
 			redirect_to user_path(current_user)
 		end
 		@points = Point.last(10)
+
 		#refer to method in model
 	    if params[:reset]
 	      @points = Point.last(10)

@@ -30,8 +30,6 @@
 			<div>
 				<%= form.label :topic_id %> 
 				<%= form.collection_select :topic_id, Topic.all, :id, :name, :prompt => "Choose the most relevant topic" %>
-
-
 			</div>
 			
 			<%=form.submit%>

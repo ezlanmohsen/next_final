@@ -19,13 +19,15 @@
 		<%= form_tag assignment_path, :method => 'get' do %>
 				<div>
 					<%= label_tag 'Topic' %>
-					<%= number_field_tag :search_topic, params[:search_topic] %>
+					<%= select_tag(:search_topic, options_from_collection_for_select(Topic.all, "id", "name", :selected => params[:search_topic]))%>
+
 
 					<%= label_tag 'Oldest Year' %>
 					<%= number_field_tag :search_year, params[:search_year] %>
 
 					<%= label_tag 'Minimum Admin Likes' %>
 					<%= number_field_tag :search_admin_likes, params[:search_admin_likes] %>
+
 				</div>
 				<div>
 					<%= submit_tag "Search", :name => nil %>
