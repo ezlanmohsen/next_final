@@ -15,6 +15,9 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@ass = Assignment.find(params[:id])
+		if current_user.id != @ass.user.id
+			redirect_to user_path(current_user)
+		end
 	end
 
 
