@@ -53,6 +53,7 @@
 			<%= ass.project.created_at.to_date %><br>
 			Assigned on: <%= distance_of_time_in_words(Time.now, ass.created_at) %> ago<br>
 			Time Remaining: <%= distance_of_time_in_words(ass.due_date, Time.now) %><br>
+			<%= link_to "Start Assignment", assignment_path(ass) %><br>
 
 			<br>
 			<br>

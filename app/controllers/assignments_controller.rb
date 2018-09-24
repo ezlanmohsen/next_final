@@ -13,6 +13,10 @@ class AssignmentsController < ApplicationController
 		end
 	end
 
+	def show
+		@ass = Assignment.find(params[:id])
+	end
+
 
 	private
 

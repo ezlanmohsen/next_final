@@ -1,0 +1,13 @@
+<div>Assignment!</div>
+
+<div>
+	<h3>Project Details</h3>
+	<div>
+		<div>Project Name: <%= @ass.project.name %></div>
+		<div>Customer Name: <%= @ass.project.user.first_name %> <%= @ass.project.user.last_name %></div>
+		<div>Topic: <%= @ass.project.topic.name %></div>
+		<div>Points Required: <%= @ass.project.pages * 10 %></div>
+		<div>Request Date: <%= @ass.project.created_at.to_date %></div>
+		<div>Time Remaining: <%= distance_of_time_in_words(@ass.due_date, Time.now) %></div>
+	</div>
+</div>
