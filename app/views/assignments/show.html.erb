@@ -1,0 +1,60 @@
+<div>Assignment!</div>
+
+<div>
+	<h3>Project Details</h3>
+	<div>
+		<div>Project Name: <%= @ass.project.name %></div>
+		<div>Customer Name: <%= @ass.project.user.first_name %> <%= @ass.project.user.last_name %></div>
+		<div>Topic: <%= @ass.project.topic.name %></div>
+		<div>Points Required: <%= @ass.project.pages * 10 %></div>
+		<div>Request Date: <%= @ass.project.created_at.to_date %></div>
+		<div>Time Remaining: <%= distance_of_time_in_words(@ass.due_date, Time.now) %></div>
+	</div>
+</div>
+
+
+<div>
+		Search for relevant points!
+
+		<%= form_tag assignment_path, :method => 'get', remote: true do %>
+				<div>
+					<%= label_tag 'Topic' %>
+					<%= select_tag(:search_topic, options_from_collection_for_select(Topic.all, "id", "name", :selected => params[:search_topic]))%>
+
+
+					<%= label_tag 'Oldest Year' %>
+					<%= number_field_tag :search_year, params[:search_year] %>
+
+					<%= label_tag 'Minimum Admin Likes' %>
+					<%= number_field_tag :search_admin_likes, params[:search_admin_likes] %>
+
+				</div>
+				<div>
+					<%= submit_tag "Search", :name => nil %>
+				</div>
+		<%end%>
+
+		<!-- form to reset ie show  available -->
+		<%= form_tag assignment_path, :method => 'get' do %>
+			<input type="hidden" name="reset" value=true/>
+			<%= submit_tag "Reset Filter", :name => nil %>
+		<% end %>
+</div>
+
+<div id="point-list">
+	TOTAL RESULTS: <%= @points.count %><br>
+	<% @points.each do |point| %>
+		Point: <%= point.name %><br>
+		Topic: <%= point.topic.name %><br>
+		Year: <%= point.year %><br>
+		Times used by admin: <%= point.like_admin %>
+		<br>
+		<br>
+	<% end %>
+
+</div>
+
+
+
+
+

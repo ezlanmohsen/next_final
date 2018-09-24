@@ -1,0 +1,12 @@
+<div id="point-list">
+	TOTAL RESULTS: <%= @points.count %><br>
+	<% @points.each do |point| %>
+		Point: <%= point.name %><br>
+		Topic: <%= point.topic.name %><br>
+		Year: <%= point.year %><br>
+		Times used by admin: <%= point.like_admin %>
+		<br>
+		<br>
+	<% end %>
+
+</div>

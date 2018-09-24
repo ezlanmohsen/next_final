@@ -30,8 +30,6 @@
 			<div>
 				<%= form.label :topic_id %> 
 				<%= form.collection_select :topic_id, Topic.all, :id, :name, :prompt => "Choose the most relevant topic" %>
-
-
 			</div>
 			
 			<%=form.submit%>
@@ -44,6 +42,22 @@
 <br>
 
 <div>
+	<% if @user.researcher? ||  @user.superadmin?%>
+		<h4>SEE PENDING ASSIGNMENTS!</h4>
+		<% @assignments.each do |ass| %>
+			<%= ass.project.name %><br>
+			<%= ass.project.user.email %><br>
+			<%= ass.project.topic.name %><br>
+			<%= ass.project.created_at.to_date %><br>
+			Assigned on: <%= distance_of_time_in_words(Time.now, ass.created_at) %> ago<br>
+			Time Remaining: <%= distance_of_time_in_words(ass.due_date, Time.now) %><br>
+			<%= link_to "Start Assignment", assignment_path(ass) %><br>
+
+			<br>
+			<br>
+
+		<% end %>
+	<% end %>
 	<h4>SEE YOUR PAST PROJECTS!</h4>
 	(A preview of all past talking points. Card style from bootsnipp.)
 	<div>
@@ -68,7 +82,15 @@
 <div>
 	<h4>MOST POPULAR POINTS SO FAR!</h4>
 	<div>
-		(A list (maybe cards?) of most popular points so far. Potentially, users interact by liking.)
+			<% @points.each do |point| %>
+				<%= point.name %><br>
+				<%= link_to "reference", point.reference_url %><br>
+				<%= point.topic.name %><br>
+
+				<br>
+				<br>
+				<br>
+			<% end %>
 	</div>
 </div>
 

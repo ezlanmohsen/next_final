@@ -8,6 +8,7 @@ class User < ApplicationRecord
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
   has_many :projects
   has_many :points
+  has_many :assignments
 
 	OCCUPATION_LIST = [
   	'Agriculture, forestry and fishing',

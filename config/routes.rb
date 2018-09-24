@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :points do
   end
 
+  resources :assignments do
+  end
+
   # Sessions routes to help with login, posting login and logging out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
