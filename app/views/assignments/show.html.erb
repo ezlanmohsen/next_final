@@ -103,9 +103,14 @@ var url = 'https://newsapi.org/v2/everything?' +
           'q=' + topic + '&' +
           'from=2018-09-24&' +
           'sortBy=popularity&' +
-          'apiKey=c595dfa7a22744e2a7d7fde71077a8ea';
+          'apiKey=' + '<%=ENV["NEWS_API_KEY"]%>';
+
+console.log(url)
+
+document.getElementById('news').innerHTML = "";
 
 var ul = document.getElementById('news');
+
 
 function createNode(element) {
     return document.createElement(element); // Create the type of element you pass in the parameters
