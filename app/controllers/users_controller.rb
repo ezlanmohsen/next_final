@@ -33,9 +33,11 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		
 		if @user.first_name == nil || @user.last_name == nil || @user.occupation == nil || @user.industry == nil || @user.mobile == nil
 			redirect_to edit_user_path(@user)
 		end
+
 		@project = Project.new
 		@projects = Project.where(user_id: @user.id)
 		@assignments = Assignment.where(user_id: @user.id)

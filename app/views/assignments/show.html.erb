@@ -29,10 +29,11 @@
 					<%= number_field_tag :search_admin_likes, params[:search_admin_likes] %>
 
 				</div>
+				
 				<div>
 					<%= submit_tag "Search", :name => nil %>
 				</div>
-		<%end%>
+		<% end %>
 
 		<!-- form to reset ie show  available -->
 		<%= form_tag assignment_path, :method => 'get' do %>
@@ -97,45 +98,45 @@
 
 <script>
 
-var topic = $('#topic').data('key1')
+	var topic = $('#topic').data('key1')
 
-var url = 'https://newsapi.org/v2/everything?' +
-          'q=' + topic + '&' +
-          'from=2018-09-24&' +
-          'sortBy=popularity&' +
-          'apiKey=' + '<%=ENV["NEWS_API_KEY"]%>';
+	var url = 'https://newsapi.org/v2/everything?' +
+	          'q=' + topic + '&' +
+	          'from=2018-09-24&' +
+	          'sortBy=popularity&' +
+	          'apiKey=' + '<%=ENV["NEWS_API_KEY"]%>';
 
-console.log(url)
+	console.log(url)
 
-document.getElementById('news').innerHTML = "";
+	document.getElementById('news').innerHTML = "";
 
-var ul = document.getElementById('news');
+	var ul = document.getElementById('news');
 
 
-function createNode(element) {
-    return document.createElement(element); // Create the type of element you pass in the parameters
-}
+	function createNode(element) {
+	    return document.createElement(element); // Create the type of element you pass in the parameters
+	}
 
-function append(parent, el) {
-    return parent.appendChild(el); // Append the second parameter(element) to the first one
-}
+	function append(parent, el) {
+	    return parent.appendChild(el); // Append the second parameter(element) to the first one
+	}
 
-var req = new Request(url);
+	var req = new Request(url);
 
-fetch(req).then(function(response) {
-  // alert(response.status);
-  return response.json();
-}).then(function(jsonData){
+	fetch(req).then(function(response) {
+	  // alert(response.status);
+	  return response.json();
+	}).then(function(jsonData){
 
-  var i = 0
-  for (var i = 0; i < 10; i++) {
-	  let content = jsonData.articles[i].description
-	  let url = jsonData.articles[i].url
-	  let li = createNode('li')
-	  li.innerHTML = content + '' + url + ' <br><br>' ;
-	  append(ul, li);
-  }
-});
+	  var i = 0
+	  for (var i = 0; i < 10; i++) {
+		  let content = jsonData.articles[i].description
+		  let url = jsonData.articles[i].url
+		  let li = createNode('li')
+		  li.innerHTML = content + '' + url + ' <br><br>' ;
+		  append(ul, li);
+	  }
+	});
 
 </script>
 
